@@ -6,7 +6,7 @@ class HomePageCard extends StatelessWidget {
   final imageUrl, title, subtitle, time;
 
   const HomePageCard(
-      {Key key,
+      {Key? key,
       this.imageUrl = "assets/cardimage.jpg",
       this.title =
           "Watch: Gameplay for the first 13 games optimised for Xbox Series X",
@@ -31,7 +31,9 @@ class HomePageCard extends StatelessWidget {
                 width: 1,
               ),
               image: DecorationImage(
-                  image: NetworkImage(imageUrl), fit: BoxFit.fill),
+                image: NetworkImage(imageUrl),
+                fit: BoxFit.fill,
+              ),
             ),
             child: Align(
               alignment: Alignment.bottomCenter,
@@ -61,20 +63,24 @@ class HomePageCard extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(
-            height: 10,
+          SizedBox(height: 10),
+          Text(
+            time,
+            style: TextStyle(
+              fontFamily: "Times",
+              fontSize: 13,
+              color: Color(0xff8a8989),
+            ),
           ),
-          Text(time,
-              style: TextStyle(
-                  fontFamily: "Times", fontSize: 13, color: Color(0xff8a8989))),
-          SizedBox(
-            height: 7,
+          SizedBox(height: 7),
+          Text(
+            title,
+            style: TextStyle(
+              fontFamily: "League",
+              fontSize: 23,
+              fontWeight: FontWeight.bold,
+            ),
           ),
-          Text(title,
-              style: TextStyle(
-                  fontFamily: "League",
-                  fontSize: 23,
-                  fontWeight: FontWeight.bold)),
         ],
       ),
     );
@@ -85,7 +91,7 @@ class CategoriesCard extends StatelessWidget {
   final imageUrl, category;
 
   CategoriesCard({
-    Key key,
+    Key? key,
     this.imageUrl,
     this.category,
   }) : super(key: key);
@@ -97,10 +103,11 @@ class CategoriesCard extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
         image: DecorationImage(
-            image: AssetImage(imageUrl),
-            colorFilter: ColorFilter.mode(Colors.black38, BlendMode.overlay),
-            fit: BoxFit.cover,
-            alignment: Alignment.center),
+          image: AssetImage(imageUrl),
+          colorFilter: ColorFilter.mode(Colors.black38, BlendMode.overlay),
+          fit: BoxFit.cover,
+          alignment: Alignment.center,
+        ),
       ),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(15),
@@ -134,7 +141,7 @@ class SearchCard extends StatelessWidget {
   final imageUrl, title, date;
 
   const SearchCard(
-      {Key key,
+      {Key? key,
       this.imageUrl = "assets/cardimage.jpg",
       this.title =
           "Watch: Gameplay for the first 13 games optimised for Xbox Series X",
@@ -145,23 +152,23 @@ class SearchCard extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.only(bottom: 29),
       child: Container(
-          height: 106,
-          child: Row(
-            children: <Widget>[
-              Container(
-                height: 105,
-                width: 155,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(6),
-                  image: DecorationImage(
-                      image: AssetImage(imageUrl), fit: BoxFit.fill),
+        height: 106,
+        child: Row(
+          children: <Widget>[
+            Container(
+              height: 105,
+              width: 155,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(6),
+                image: DecorationImage(
+                  image: AssetImage(imageUrl),
+                  fit: BoxFit.fill,
                 ),
               ),
-              SizedBox(
-                width: 6,
-              ),
-              Expanded(
-                  child: Column(
+            ),
+            SizedBox(width: 6),
+            Expanded(
+              child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 mainAxisSize: MainAxisSize.max,
@@ -183,9 +190,11 @@ class SearchCard extends StatelessWidget {
                     ),
                   )
                 ],
-              ))
-            ],
-          )),
+              ),
+            )
+          ],
+        ),
+      ),
     );
   }
 }
